@@ -16,13 +16,11 @@ public class Problema1 {
     public Problema1(int anio,int mes, int dia){
         
         if(dia<0 || mes<0 || anio<0){
-            throw new IllegalArgumentException("error en los argumentos, no se permiten nº negativos"
-                + " ni letras");
+            throw new IllegalArgumentException("error en los argumentos, no se permiten nº negativos");
         }
         
         this.setFecha(new GregorianCalendar(anio,mes,dia));
                
-        
     }
     
     public void setFecha(Calendar fecha){
@@ -32,9 +30,15 @@ public class Problema1 {
     public boolean es_bisiesto(){
         boolean bisiesto=false;
         
-        if((this.fecha.get(Calendar.YEAR) % 100) % 4 == 0)
-            bisiesto=true;
-        
+        if((this.fecha.get(Calendar.YEAR) % 100) % 4 == 0){
+            if(this.fecha.get(Calendar.YEAR) % 100 == 0){
+                if(this.fecha.get(Calendar.YEAR) % 400 == 0){
+                    bisiesto=true;
+                }
+            }else{
+                bisiesto=true;
+            }
+        }
         return bisiesto;
     }
     
@@ -47,7 +51,7 @@ public class Problema1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Problema1 p = new Problema1(1800,4,10);
+        Problema1 p = new Problema1(2000,4,10);
         if(p.es_bisiesto()){
             System.out.println("es bisiesto");
         }else{
