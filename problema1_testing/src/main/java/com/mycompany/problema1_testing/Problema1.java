@@ -1,52 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package com.mycompany.problema1_testing;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
  *
- * @author usuario
+ * @author Javier González
+ * @author Laura Fernández
  */
 public class Problema1 {
-    private int dia;
-    private int mes;
-    private int anio;
     
-    public Problema1(int dia, int mes, int anio){
+    private Calendar fecha;
+    public Problema1(int anio,int mes, int dia){
         
         if(dia<0 || mes<0 || anio<0){
             throw new IllegalArgumentException("error en los argumentos, no se permiten nº negativos"
                 + " ni letras");
         }
         
-        this.setDia(dia);
-        this.setMes(mes);
-        this.setAnio(anio);
-        
+        this.setFecha(new GregorianCalendar(anio,mes,dia));
+               
         
     }
     
-    public void es_bisiesto(){
-        if(this.anio % 4 == 0){
-            System.out.println("el año " + this.anio + " es bisiesto");
-        }else{
-            System.out.println("el año " + this.anio + " no es bisiesto");
-        }
+    public void setFecha(Calendar fecha){
+        this.fecha = fecha;
     }
-
-    public void setDia(int dia) {
-        this.dia = dia;
+    
+    public boolean es_bisiesto(){
+        boolean bisiesto=false;
+        
+        if((this.fecha.get(Calendar.YEAR) % 100) % 4 == 0)
+            bisiesto=true;
+        
+        return bisiesto;
     }
-
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
+    
     
     
 
@@ -56,8 +47,12 @@ public class Problema1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Problema1 p = new Problema1(10,-6,2017);
-        p.es_bisiesto();
+        Problema1 p = new Problema1(1800,4,10);
+        if(p.es_bisiesto()){
+            System.out.println("es bisiesto");
+        }else{
+            System.out.println("NO es bisiesto");
+        }
         
     }
     
