@@ -30,15 +30,14 @@ public class Problema1 {
     public boolean es_bisiesto(){
         boolean bisiesto=false;
         
-        if((this.fecha.get(Calendar.YEAR) % 100) % 4 == 0){
-            if(this.fecha.get(Calendar.YEAR) % 100 == 0){
-                if(this.fecha.get(Calendar.YEAR) % 400 == 0){
-                    bisiesto=true;
-                }
-            }else{
-                bisiesto=true;
-            }
-        }
+        
+        int ultimasCifras = this.fecha.get(Calendar.YEAR) % 100;
+        int anio = this.fecha.get(Calendar.YEAR);
+        if(ultimasCifras % 4 == 0 && anio % 100 != 0)
+            bisiesto = true;
+        else if(ultimasCifras % 4 == 0 && anio % 100 == 0 && anio % 400 == 0)
+            bisiesto = true;
+        
         return bisiesto;
     }
     
@@ -51,7 +50,7 @@ public class Problema1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Problema1 p = new Problema1(2000,4,10);
+        Problema1 p = new Problema1(2012,4,10);
         if(p.es_bisiesto()){
             System.out.println("es bisiesto");
         }else{
