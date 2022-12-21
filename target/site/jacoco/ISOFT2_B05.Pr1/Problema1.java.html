@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Problema1.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ejecutando Testing</a> &gt; <a href="index.source.html" class="el_package">ISOFT2_B05.Pr1</a> &gt; <span class="el_source">Problema1.java</span></div><h1>Problema1.java</h1><pre class="source lang-java linenums">package ISOFT2_B05.Pr1;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class Problema1 {
+    
+    private Calendar calendario;
+    
+<span class="fc" id="L10">    public Problema1(int anio,int mes, int dia){</span>
+        
+<span class="fc" id="L12">        this.setCalendario(anio,mes,dia);</span>
+               
+<span class="fc" id="L14">    }</span>
+    
+<span class="nc" id="L16">    public Problema1() {</span>
+    	
+<span class="nc" id="L18">    }</span>
+    
+    
+    public void setCalendario(int anio,int mes, int dia){
+<span class="pc bpc" id="L22" title="2 of 6 branches missed.">        if(dia&lt;0 || mes&lt;0 || anio&lt;0){</span>
+<span class="fc" id="L23">            throw new IllegalArgumentException(&quot;error en los argumentos, no se permiten nº negativos&quot;);</span>
+        }
+<span class="fc" id="L25">        this.calendario = new GregorianCalendar(anio,mes,dia);</span>
+<span class="fc" id="L26">    }</span>
+    
+    public void setFecha(int anio,int mes, int dia) {
+<span class="pc bpc" id="L29" title="2 of 6 branches missed.">    	if(dia&lt;0 || mes&lt;0 || anio&lt;0){</span>
+<span class="fc" id="L30">            throw new IllegalArgumentException(&quot;error en los argumentos, no se permiten nº negativos&quot;);</span>
+        }
+    	
+<span class="fc" id="L33">    	this.calendario.set(anio, mes, dia);</span>
+<span class="fc" id="L34">    }</span>
+    
+    public boolean es_bisiesto(){
+<span class="fc" id="L37">        boolean bisiesto=false;</span>
+        
+        
+<span class="fc" id="L40">        int ultimasCifras = this.calendario.get(Calendar.YEAR) % 100;</span>
+<span class="fc" id="L41">        int anio = this.calendario.get(Calendar.YEAR);</span>
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">        if(ultimasCifras % 4 == 0 &amp;&amp; anio % 100 != 0)</span>
+<span class="nc" id="L43">            bisiesto = true;</span>
+<span class="pc bpc" id="L44" title="2 of 6 branches missed.">        else if(ultimasCifras % 4 == 0 &amp;&amp; anio % 100 == 0 &amp;&amp; anio % 400 == 0)</span>
+<span class="fc" id="L45">            bisiesto = true;</span>
+        
+<span class="fc" id="L47">        return bisiesto;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
